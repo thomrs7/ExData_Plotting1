@@ -18,6 +18,10 @@ filtered_data$timestamp <- as.POSIXct(filtered_data$timestamp, format="%m/%d/%Y 
 
 
 
-png(filename = "plot1.png", width = 480, height = 480)
-with(filtered_data, hist(Global_active_power, col='red', main = paste("Global Active Power"), xlab = "Global Active Power (kilowatts)"))
+png(filename = "plot3.png", width = 480, height = 480)
+plot(filtered_data$timestamp, filtered_data$Sub_metering_1, col='black', type='l',ylab = "Global Active Power (kilowatts)", xlab = "")
+lines(filtered_data$timestamp, filtered_data$Sub_metering_2, col='red')
+lines(filtered_data$timestamp, filtered_data$Sub_metering_3, col='blue')
+legend("topright", col = c("black", "red", "blue"), lty = 1, lwd = 2, 
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))     
 dev.off()
